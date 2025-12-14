@@ -1,0 +1,33 @@
+{
+  "name": "node-judge-example",
+  "version": "1.0.0",
+  "description": "Mini online judge for Node.js tasks (stdin/stdout, time & memory)",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm run test:io && concurrently \"npm run server\" \"npm run client\"",
+    "test": "node judge.js",
+    "test:io": "node test-io.js",
+    "test:health": "node test-health.js",
+    "test:e2e": "node test-e2e-full.js",
+    "test:watch": "node test-watch.js",
+    "test:all": "npm run test:io && npm run test:health && npm run test",
+    "test:full": "./test-all.sh",
+    "pretest": "npm run test:io",
+    "server": "node server.js",
+    "dev": "npm run test:io && concurrently \"npm run server\" \"npm run client\"",
+    "dev:watch": "concurrently \"nodemon server.js\" \"npm run client\" \"npm run test:watch\"",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install"
+  },
+  "dependencies": {
+    "ws": "^8.16.0",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2",
+    "chokidar": "^3.5.3"
+  },
+  "license": "MIT"
+}
