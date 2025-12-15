@@ -8,11 +8,12 @@
     <title>Online Judge</title>
     <script>
       // Настройка Monaco Editor перед загрузкой React
-      // Используем актуальную версию, совместимую с установленным пакетом (0.54.0)
+      // Используем локальные файлы, чтобы работать без доступа в интернет
+      const monacoBase = (window.PUBLIC_URL || '') + '/monaco-editor/min/vs';
+
       window.MonacoEnvironment = {
         getWorkerUrl: function (moduleId, label) {
-          // Используем CDN с актуальной версией (совместимой с установленной в package.json)
-          const baseUrl = 'https://cdn.jsdelivr.net/npm/monaco-editor@0.54.0/min/vs';
+          const baseUrl = monacoBase;
           if (label === 'json') {
             return baseUrl + '/language/json/json.worker.js';
           }

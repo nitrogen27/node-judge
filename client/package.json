@@ -15,7 +15,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "copy-monaco": "node scripts/copy-monaco.js",
+    "postinstall": "npm run copy-monaco",
+    "prestart": "npm run copy-monaco",
+    "prebuild": "npm run copy-monaco"
   },
   "eslintConfig": {
     "extends": [

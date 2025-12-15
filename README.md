@@ -2,7 +2,7 @@
 
 Веб-приложение для проверки решений задач на Node.js с использованием WebSocket для обмена данными.
 
-https://cdn.jsdelivr.net/npm/monaco-editor@0.54.0/min/vs/loader.js 
+Monaco Editor теперь копируется в `client/public/monaco-editor` и не требует CDN.
 
 ## Возможности
 

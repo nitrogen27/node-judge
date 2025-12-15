@@ -4,20 +4,21 @@ import loader from '@monaco-editor/loader';
 import './index.css';
 import App from './App';
 
-// Настройка Monaco Editor для работы с react-scripts
-// Используем CDN для надежной загрузки (совместимо с версией 0.54.0 из package.json)
+// Настройка Monaco Editor для работы без CDN (используем локальные файлы из public/monaco-editor)
+const monacoBasePath = `${process.env.PUBLIC_URL || ''}/monaco-editor/min/vs`;
+
 loader.config({
   paths: {
-    vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.54.0/min/vs'
+    vs: monacoBasePath
   }
 });
 
-// Настройка MonacoEnvironment для загрузки worker'ов
+// Настройка MonacoEnvironment для загрузки worker'ов из локальных файлов
 // (дополнительная настройка, если не установлен в index.html)
 if (typeof window !== 'undefined' && !window.MonacoEnvironment) {
   window.MonacoEnvironment = {
     getWorkerUrl: function (moduleId, label) {
-      const baseUrl = 'https://cdn.jsdelivr.net/npm/monaco-editor@0.54.0/min/vs';
+      const baseUrl = monacoBasePath;
       if (label === 'json') {
         return `${baseUrl}/language/json/json.worker.js`;
       }
